@@ -2,11 +2,11 @@ import { useRef, useEffect } from "react";
 import { dockApps } from "#constants/index.js";
 import { Tooltip } from "react-tooltip";
 import gsap from "gsap";
+import useWindowStore from "#store/window.js";
 
 const Dock = () => {
+	const { openWindow, closeWindow, windows } = useWindowStore();
 	const dockRef = useRef(null);
-
-	const toggleApp = (app) => {};
 
 	useEffect(() => {
 		const dock = dockRef.current;
@@ -14,30 +14,46 @@ const Dock = () => {
 
 		const icons = dock.querySelectorAll(".dock-icon");
 
+		const animateIcons = (mouseX) => {
+			const { left } = dock.getBoundingClientRect();
+			let closestIcon = null;
+			let minDistance = Infinity;
+
+			icons.forEach((icon) => {
+				const { left: iconLeft, width } = icon.getBoundingClientRect();
+				const center = iconLeft - left + width / 2;
+				const distance = Math.abs(mouseX - center);
+
+				if (distance < minDistance) {
+					minDistance = distance;
+					closestIcon = icon;
+				}
+
+				// Reset all icons first
+				gsap.to(icon, {
+					scale: 1,
+					y: 0,
+					duration: 0.2,
+					ease: "power1.out",
+				});
+			});
+
+			// Animate only the closest icon
+			if (closestIcon && minDistance < 80) {
+				gsap.to(closestIcon, {
+					scale: 1.25,
+					y: -15,
+					duration: 0.2,
+					ease: "power1.out",
+				});
+			}
+		};
 		const handleMouseMove = (e) => {
 			const { left } = dock.getBoundingClientRect();
-
-			const animateIcons = (mouseX) => {
-				icons.forEach((icon) => {
-					const { left: iconLeft, width } = icon.getBoundingClientRect();
-					const center = iconLeft - left + width / 2;
-					const distance = Math.abs(mouseX - center);
-
-					const intensity = Math.exp(-(distance ** 2) / 20000);
-
-					gsap.to(icon, {
-						scale: 1 + 0.25 * intensity,
-						y: -15 * intensity,
-						duration: 0.2,
-						ease: "power1.out",
-					});
-				});
-			};
-
 			animateIcons(e.clientX - left);
 		};
 
-		const resetIcons = () =>
+		const resetIcons = () => {
 			icons.forEach((icon) => {
 				gsap.to(icon, {
 					scale: 1,
@@ -46,6 +62,7 @@ const Dock = () => {
 					ease: "power1.out",
 				});
 			});
+		};
 
 		dock.addEventListener("mousemove", handleMouseMove);
 		dock.addEventListener("mouseleave", resetIcons);
@@ -55,6 +72,23 @@ const Dock = () => {
 			dock.removeEventListener("mouseleave", resetIcons);
 		};
 	}, []);
+
+	const toggleApp = (app) => {
+		if (!app.canOpen) return;
+
+		const window = windows[app.id];
+
+		if (!window) {
+			console.error(`Window not found for app: ${app.id}`);
+			return;
+		}
+
+		if (window.isOpen) {
+			closeWindow(app.id);
+		} else {
+			openWindow(app.id);
+		}
+	};
 
 	return (
 		<section id="dock">

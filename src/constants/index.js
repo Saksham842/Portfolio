@@ -391,7 +391,7 @@ const ABOUT_LOCATION = {
 			kind: "file",
 			fileType: "img",
 			position: "top-10 left-5",
-			imageUrl: "/images/saksham.jpg",
+			imageUrl: "/images/adrian.jpg",
 		},
 		{
 			id: 2,
@@ -400,7 +400,7 @@ const ABOUT_LOCATION = {
 			kind: "file",
 			fileType: "img",
 			position: "top-28 right-72",
-			imageUrl: "/images/saksham-2.jpg",
+			imageUrl: "/images/adrian-2.jpg",
 		},
 		{
 			id: 3,
@@ -409,7 +409,7 @@ const ABOUT_LOCATION = {
 			kind: "file",
 			fileType: "img",
 			position: "top-52 left-80",
-			imageUrl: "/images/saksham-3.jpeg",
+			imageUrl: "/images/adrian-3.jpeg",
 		},
 		{
 			id: 4,
@@ -419,7 +419,7 @@ const ABOUT_LOCATION = {
 			fileType: "txt",
 			position: "top-60 left-5",
 			subtitle: "Meet the Developer Behind the Code",
-			image: "/images/saksham.jpg",
+			image: "/images/adrian.jpg",
 			description: [
 				"Hey! I'm Saksham 👋, a CS undergrad at ABV-IIITM Gwalior with a passion for Full-Stack development and Machine Learning.",
 				"I specialize in React, Node.js, FastAPI, and Python—and I love building things that are fast, intelligent, and actually useful.",
