@@ -13,7 +13,7 @@ const Photos = () => {
 				<h2>Gallery</h2>
 			</div>
 
-			<div className="flex h-80">
+			<div className="flex flex-1 min-h-0">
 				{/* Sidebar */}
 				<div className="sidebar">
 					<h2>LIBRARY</h2>
