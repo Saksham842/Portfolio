@@ -347,6 +347,14 @@ main {
     border: 1px solid var(--window-border);
     @apply w-xl absolute top-32 left-1/12 shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden transition-colors duration-300;
 
+    &.maximized {
+      align-items: center;
+
+      #window-header {
+        width: 100%;
+      }
+    }
+
     h2 {
       @apply font-bold text-sm text-center w-full;
     }
@@ -437,7 +445,19 @@ main {
   #photos {
     background-color: var(--window-bg);
     border: 1px solid var(--window-border);
-    @apply max-w-3xl absolute top-96 left-1/2 -translate-y-1/2 shadow-2xl drop-shadow-2xl rounded-xl transition-colors duration-300;
+    @apply absolute top-24 left-40 shadow-2xl drop-shadow-2xl rounded-xl transition-colors duration-300;
+    max-width: 42rem;
+    max-height: 50vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    &::-webkit-scrollbar { display: none; }
+
+    &.maximized {
+      max-height: none;
+      max-width: none;
+    }
 
     .sidebar {
       background-color: var(--window-sidebar-bg);

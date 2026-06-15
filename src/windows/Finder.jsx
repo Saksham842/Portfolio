@@ -14,7 +14,7 @@ const Finder = () => {
 	const { activeLocation, setActiveLocation } = useLocationStore();
 
 	useGSAP(() => {
-		Draggable.create(".content > li");
+		Draggable.create("#finder .content > li");
 	}, [activeLocation]);
 
 	const openItem = (item) => {
