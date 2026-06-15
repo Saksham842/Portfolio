@@ -7,7 +7,7 @@
   --font-sans-apple: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Icons", "Helvetica Neue", Helvetica, Arial, sans-serif;
 
   /* Navbar */
-  --nav-bg: rgba(255, 255, 255, 0.4);
+  --nav-bg: rgba(255, 255, 255, 0.55);
   --nav-text: black;
   --nav-hover-bg: rgba(0, 0, 0, 0.08);
 
@@ -20,8 +20,8 @@
   --window-text-secondary: #86868b;
 
   /* Dock */
-  --dock-bg: rgba(255, 255, 255, 0.25);
-  --dock-border: rgba(255, 255, 255, 0.2);
+  --dock-bg: rgba(255, 255, 255, 0.5);
+  --dock-border: rgba(255, 255, 255, 0.4);
 
   /* Icons & controls */
   --icon-hover-bg: rgba(0, 0, 0, 0.08);
@@ -176,7 +176,7 @@ main {
     background-color: var(--nav-bg);
     color: var(--nav-text);
     border-b: 1px solid var(--window-border);
-    @apply flex justify-between items-center backdrop-blur-3xl p-1 px-5 select-none transition-all duration-300;
+    @apply flex justify-between items-center backdrop-blur-3xl p-1 px-12 select-none transition-all duration-300;
 
     div {
       @apply flex items-center max-sm:w-full max-sm:justify-center gap-3.5;
@@ -226,7 +226,7 @@ main {
 
   .nav-icon {
     filter: var(--logo-filter);
-    @apply h-4 w-auto transition-all duration-150;
+    @apply h-3 w-auto transition-all duration-150;
   }
 
   #welcome {
