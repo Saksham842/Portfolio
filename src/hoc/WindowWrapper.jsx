@@ -64,6 +64,15 @@ const WindowWrapper = (Component, windowKey) => {
 					opacity: 1,
 					duration: 0.25,
 					ease: "power2.out",
+					onComplete: () => {
+						if (windows[windowKey].isMaximized) {
+							gsap.set(el, {
+								x: 0, y: 0, left: 0, top: 0,
+								width: window.innerWidth,
+								height: window.innerHeight,
+							});
+						}
+					},
 				});
 			}
 		}, [isOpen, isMinimized]);

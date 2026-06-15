@@ -38,21 +38,16 @@ const Navbar = () => {
 							<p>{name}</p>
 						</li>
 					))}
+					<li onClick={toggleDarkMode} className="nav-item">
+						<p>Theme</p>
+					</li>
 				</ul>
 			</div>
 
 			<div>
 				<ul>
-					{navIcons.map(({ id, img }) => (
-						<li
-							key={id}
-							onClick={() => {
-								if (id === 4) {
-									toggleDarkMode();
-								}
-							}}
-							className="nav-item"
-						>
+					{navIcons.filter(({ id }) => id !== 4).map(({ id, img }) => (
+						<li key={id} className="nav-item">
 							<img src={img} className="nav-icon" alt={`icon-${id}`} />
 						</li>
 					))}
