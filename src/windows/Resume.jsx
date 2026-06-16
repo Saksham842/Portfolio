@@ -34,7 +34,7 @@ const Resume = () => {
 				</a>
 			</div>
 
-			<div className="overflow-y-auto max-h-[75vh] resume-container p-4 flex flex-col items-center select-text">
+			<div className="overflow-y-auto resume-container p-4 flex flex-col items-center select-text">
 				<Document
 					file="files/my_resume.pdf"
 					onLoadSuccess={onDocumentLoadSuccess}

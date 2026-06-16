@@ -530,8 +530,9 @@ main {
   #resume {
     background-color: var(--window-bg);
     border: 1px solid var(--window-border);
-    @apply absolute top-16 left-7/12 shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden transition-colors duration-300;
+    @apply absolute top-16 left-7/12 shadow-2xl drop-shadow-2xl rounded-xl transition-colors duration-300;
     z-index: 1;
+    overflow: hidden;
 
     #window-header {
       position: relative;
@@ -544,14 +545,29 @@ main {
 
     .resume-container {
       background-color: var(--window-sidebar-bg);
-      @apply transition-colors duration-300;
+      max-height: 75vh;
       scrollbar-width: none;
       -ms-overflow-style: none;
       &::-webkit-scrollbar { display: none; }
+      @apply transition-colors duration-300;
     }
 
-    &.maximized .resume-container {
-      max-height: none !important;
+    &.maximized {
+      overflow-y: auto;
+      overflow-x: hidden;
+      background-color: var(--window-sidebar-bg);
+
+      #window-header {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        background-color: var(--window-header-bg);
+      }
+
+      .resume-container {
+        max-height: none;
+        overflow: visible;
+      }
     }
   }
 
