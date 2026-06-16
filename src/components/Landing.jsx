@@ -11,7 +11,7 @@ const Landing = forwardRef((_, ref) => {
 
 	return (
 		<div ref={ref} id="landing">
-			<video id="landing-video" autoPlay muted playsInline
+			<video id="landing-video" autoPlay muted playsInline preload="metadata"
 				onTimeUpdate={(e) => { if (e.target.currentTime >= 30) e.target.currentTime = 0; }}
 			>
 				<source src="/images/bg-video.mp4" type="video/mp4" />

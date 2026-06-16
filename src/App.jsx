@@ -39,11 +39,14 @@ const App = () => {
 
 	return (
 		<>
-			<video id="bg-video" autoPlay muted playsInline
-				onTimeUpdate={(e) => { if (e.target.currentTime >= 30) e.target.currentTime = 0; }}
-			>
-				<source src="/images/bg-video.mp4" type="video/mp4" />
-			</video>
+			{dismissed && (
+				<video id="bg-video" autoPlay muted playsInline
+					onTimeUpdate={(e) => { if (e.target.currentTime >= 30) e.target.currentTime = 0; }}
+				>
+					<source src="/images/bg-video.mp4" type="video/mp4" />
+				</video>
+			)}
+			<div id="bg-fallback" />
 			<Landing ref={landingRef} />
 			<main>
 				<Navbar />
