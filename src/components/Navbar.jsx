@@ -81,21 +81,17 @@ const Navbar = () => {
 							<button
 								key={id}
 								onClick={() => handleNavClick(type)}
-								className="w-full text-left px-3 py-2.5 rounded-lg text-sm font-medium hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+								className="w-full text-left px-3 py-2.5 rounded-lg text-sm font-medium hover:bg-black/10 dark:hover:bg-white/15 active:bg-black/15 dark:active:bg-white/20 transition-colors"
 							>
 								{name}
 							</button>
 						))}
-						<hr className="border-gray-200 dark:border-gray-700" />
 						<button
 							onClick={() => { toggleDarkMode(); setMenuOpen(false); }}
-							className="w-full text-left px-3 py-2.5 rounded-lg text-sm font-medium hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+							className="w-full text-left px-3 py-2.5 rounded-lg text-sm font-medium hover:bg-black/10 dark:hover:bg-white/15 active:bg-black/15 dark:active:bg-white/20 transition-colors"
 						>
-							Toggle Theme
+							Theme
 						</button>
-						<div className="px-3 pt-1 text-xs text-gray-500 dark:text-gray-400">
-							{time.format("ddd, MMM D, h:mm A")}
-						</div>
 					</div>
 				</div>
 			)}

@@ -245,7 +245,7 @@ main {
   }
 
   #dock {
-    @apply absolute bottom-5 left-1/2 -translate-x-1/2 z-50 select-none max-sm:hidden;
+    @apply absolute bottom-5 left-1/2 -translate-x-1/2 z-50 select-none;
 
     .dock-container {
       background-color: var(--dock-bg);
@@ -777,11 +777,14 @@ main {
     height: calc(100dvh - 10px) !important;
     max-width: none !important;
     max-height: none !important;
-    transform: none !important;
-    left: auto !important;
-    top: auto !important;
-    right: auto !important;
-    bottom: auto !important;
+  }
+
+  #safari.maximized, #terminal.maximized, #contact.maximized,
+  #photos.maximized, #resume.maximized, #finder.maximized,
+  #txtfile.maximized, #imgfile.maximized {
+    inset: 0 !important;
+    width: 100dvw !important;
+    height: 100dvh !important;
   }
 
   .window-wrapper {
@@ -889,6 +892,10 @@ main {
   #resume .react-pdf__Page canvas {
     width: 100% !important;
     height: auto !important;
+  }
+
+  #welcome {
+    pointer-events: none !important;
   }
 
   #txtfile {

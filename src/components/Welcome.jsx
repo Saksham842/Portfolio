@@ -93,7 +93,7 @@ const Welcome = () => {
 				<p className="text-2xl font-georama font-light text-gray-300">Hey, I'm Saksham!</p>
 				<h1 className="text-5xl italic font-georama font-bold text-white">portfolio</h1>
 				<p className="text-sm text-gray-400 mt-4 max-w-xs">
-					Tap the menu icon in the top-right to explore Projects, Contact, and Resume.
+					Move to a desktop site or PC for a better experience.
 				</p>
 			</div>
 		</section>

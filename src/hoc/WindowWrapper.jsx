@@ -61,20 +61,18 @@ const WindowWrapper = (Component, windowKey) => {
 				});
 			} else {
 				el.style.display = "block";
+				if (windows[windowKey].isMaximized) {
+					gsap.set(el, {
+						x: 0, y: 0, left: 0, top: 0,
+						width: window.innerWidth,
+						height: window.innerHeight,
+					});
+				}
 				gsap.to(el, {
 					scale: 1,
 					opacity: 1,
 					duration: 0.25,
 					ease: "power2.out",
-					onComplete: () => {
-						if (windows[windowKey].isMaximized) {
-							gsap.set(el, {
-								x: 0, y: 0, left: 0, top: 0,
-								width: window.innerWidth,
-								height: window.innerHeight,
-							});
-						}
-					},
 				});
 			}
 		}, [isOpen, isMinimized]);
@@ -85,7 +83,9 @@ const WindowWrapper = (Component, windowKey) => {
 			if (!el) return;
 
 			const instance = dragInstanceRef.current;
-			console.log(`[WindowWrapper] ${windowKey} isMaximized:`, isMaximized);
+
+			// On mobile, let CSS handle maximize/unmaximize
+			if (window.innerWidth < 640) return;
 
 			if (isMaximized) {
 				if (instance) instance.disable();
@@ -100,7 +100,6 @@ const WindowWrapper = (Component, windowKey) => {
 					x: gsap.getProperty(el, "x"),
 					y: gsap.getProperty(el, "y"),
 				};
-				console.log(`[WindowWrapper] Saved bounds for ${windowKey}:`, prevBounds.current);
 
 				// Maximize to cover the entire view area
 				gsap.to(el, {
@@ -117,7 +116,6 @@ const WindowWrapper = (Component, windowKey) => {
 				if (instance) instance.enable();
 
 				if (prevBounds.current) {
-					console.log(`[WindowWrapper] Restoring bounds for ${windowKey}:`, prevBounds.current);
 					// Restore size, position, and drag translation
 					gsap.to(el, {
 						x: prevBounds.current.x,

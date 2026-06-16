@@ -21,6 +21,9 @@ const Landing = forwardRef((_, ref) => {
 				<p className="landing-date">{time.format("dddd, MMMM D, YYYY")}</p>
 				<p className="landing-name">Saksham's Portfolio</p>
 				<p className="landing-prompt">Press any key to enter</p>
+				<p className="sm:hidden text-xs text-gray-400 mt-6 max-w-xs opacity-70">
+					Move to a desktop site or PC for a better experience.
+				</p>
 			</div>
 		</div>
 	);

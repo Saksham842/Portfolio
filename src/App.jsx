@@ -16,16 +16,25 @@ const App = () => {
 			y: "-100%",
 			duration: 1.2,
 			ease: "power4.inOut",
+			onComplete: () => {
+				if (landingRef.current) landingRef.current.style.pointerEvents = "none";
+			},
 		});
 	}, [dismissed]);
 
 	useEffect(() => {
-		const handler = (e) => {
+		const onKey = (e) => {
 			if (e.key === "F12" || e.key === "F5") return;
 			handleDismiss();
 		};
-		window.addEventListener("keydown", handler);
-		return () => window.removeEventListener("keydown", handler);
+		const onClick = () => handleDismiss();
+		const el = landingRef.current;
+		window.addEventListener("keydown", onKey);
+		el?.addEventListener("click", onClick);
+		return () => {
+			window.removeEventListener("keydown", onKey);
+			el?.removeEventListener("click", onClick);
+		};
 	}, [handleDismiss]);
 
 	return (
