@@ -11,6 +11,11 @@ const Landing = forwardRef((_, ref) => {
 
 	return (
 		<div ref={ref} id="landing">
+			<video id="landing-video" autoPlay muted playsInline
+				onTimeUpdate={(e) => { if (e.target.currentTime >= 30) e.target.currentTime = 0; }}
+			>
+				<source src="/images/bg-video.mp4" type="video/mp4" />
+			</video>
 			<div className="landing-content">
 				<time className="landing-time">{time.format("h:mm")}</time>
 				<p className="landing-date">{time.format("dddd, MMMM D, YYYY")}</p>
