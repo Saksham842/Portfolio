@@ -46,7 +46,6 @@ const App = () => {
 					<source src="/images/bg-video.mp4" type="video/mp4" />
 				</video>
 			)}
-			<div id="bg-fallback" />
 			<Landing ref={landingRef} />
 			<main>
 				<Navbar />
