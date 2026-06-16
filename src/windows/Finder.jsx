@@ -14,7 +14,9 @@ const Finder = () => {
 	const { activeLocation, setActiveLocation } = useLocationStore();
 
 	useGSAP(() => {
-		Draggable.create("#finder .content > li");
+		if (window.innerWidth >= 640) {
+			Draggable.create("#finder .content > li");
+		}
 	}, [activeLocation]);
 
 	const openItem = (item) => {

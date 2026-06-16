@@ -17,6 +17,7 @@ const Home = () => {
 	};
 
 	useGSAP(() => {
+		if (window.innerWidth < 640) return;
 		Draggable.create(".folder");
 	}, []);
 

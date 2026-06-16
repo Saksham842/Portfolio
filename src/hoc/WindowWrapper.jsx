@@ -19,6 +19,8 @@ const WindowWrapper = (Component, windowKey) => {
 			const el = ref.current;
 			if (!el) return;
 
+			if (window.innerWidth < 640) return;
+
 			const [instance] = Draggable.create(el, {
 				trigger: el.querySelector("#window-header"),
 				onPress: () => focusWindow(windowKey),
