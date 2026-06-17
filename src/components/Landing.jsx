@@ -12,7 +12,7 @@ const Landing = forwardRef((_, ref) => {
 	return (
 		<div ref={ref} id="landing">
 			<video id="landing-video" autoPlay muted loop playsInline preload="metadata">
-				<source src="/images/bg-video.webm" type="video/webm" />
+				<source src="/images/bg-video-30s.mp4" type="video/mp4" />
 				<source src="/images/bg-video-optimized.mp4" type="video/mp4" />
 			</video>
 			<div className="landing-content">
