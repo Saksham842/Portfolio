@@ -5,7 +5,7 @@ import gsap from "gsap";
 import useWindowStore from "#store/window.js";
 
 const Dock = () => {
-	const { openWindow, closeWindow, windows } = useWindowStore();
+	const { openWindow, closeWindow, minimizeWindow, unminimizeWindow, focusWindow, windows } = useWindowStore();
 	const dockRef = useRef(null);
 
 	useEffect(() => {
@@ -83,10 +83,25 @@ const Dock = () => {
 			return;
 		}
 
-		if (window.isOpen) {
-			closeWindow(app.id);
-		} else {
+		if (!window.isOpen) {
 			openWindow(app.id);
+		} else if (window.isMinimized) {
+			unminimizeWindow(app.id);
+			focusWindow(app.id);
+		} else {
+			// Find active top-most window
+			const openNonMinimizedWindows = Object.entries(windows).filter(
+				([, w]) => w.isOpen && !w.isMinimized
+			);
+			const isFocused =
+				openNonMinimizedWindows.length > 0 &&
+				window.zIndex === Math.max(...openNonMinimizedWindows.map(([, w]) => w.zIndex));
+
+			if (isFocused) {
+				minimizeWindow(app.id);
+			} else {
+				focusWindow(app.id);
+			}
 		}
 	};
 

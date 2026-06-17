@@ -23,20 +23,20 @@ const Resume = () => {
 		<>
 			<div id="window-header">
 				<WindowControls target="resume" />
-				<h2>Resume.pdf</h2>
+				<h2>my_resume.pdf</h2>
 				<a
-					href="files/resume.pdf"
+					href="files/my_resume.pdf"
 					download
-					className="flex items-center gap-1 text-xs text-blue-500 hover:underline cursor-pointer"
+					className="flex items-center gap-1.5 text-sm text-blue-500 hover:text-blue-600 font-medium cursor-pointer"
 					title="Download resume"
 				>
-					<Download className="icon" size={13} /> Download
+					<Download className="icon" size={24} /> Download
 				</a>
 			</div>
 
-			<div className="overflow-y-auto max-h-[75vh] bg-neutral-100 p-4 flex flex-col items-center select-text">
+			<div className="overflow-y-auto resume-container p-4 flex flex-col items-center select-text">
 				<Document
-					file="files/resume.pdf"
+					file="files/my_resume.pdf"
 					onLoadSuccess={onDocumentLoadSuccess}
 					loading={
 						<div className="flex-center p-10 text-sm font-georama text-neutral-500">

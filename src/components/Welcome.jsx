@@ -76,19 +76,25 @@ const Welcome = () => {
 
 	return (
 		<section id="welcome">
-			<p ref={subtitleRef}>
-				{renderText(
-					"Hey, I'm Saksham! Welcome to my",
-					"text-3xl font-georama",
-					100,
-				)}
-			</p>
-			<h1 ref={titleRef} className="mt-7">
-				{renderText("portfolio", "text-9xl italic font-georama")}
-			</h1>
+			<div className="hidden sm:block">
+				<p ref={subtitleRef}>
+					{renderText(
+						"Hey, I'm Saksham! Welcome to my",
+						"text-3xl font-georama",
+						100,
+					)}
+				</p>
+				<h1 ref={titleRef} className="mt-7">
+					{renderText("portfolio", "text-9xl italic font-georama")}
+				</h1>
+			</div>
 
-			<div className="small-screen">
-				<p>This Portfolio is designed for desktop/tablet screens only.</p>
+			<div className="sm:hidden flex flex-col items-center gap-4 text-center px-6">
+				<p className="text-2xl font-georama font-light text-gray-300">Hey, I'm Saksham!</p>
+				<h1 className="text-5xl italic font-georama font-bold text-white">portfolio</h1>
+				<p className="text-sm text-gray-400 mt-4 max-w-xs">
+					Move to a desktop site or PC for a better experience.
+				</p>
 			</div>
 		</section>
 	);

@@ -4,11 +4,20 @@ import WindowWrapper from "#hoc/WindowWrapper.jsx";
 import { locations } from "#constants/index.js";
 import useLocationStore from "#store/location.js";
 import useWindowStore from "#store/window.js";
+import { useGSAP } from "@gsap/react";
+import { Draggable } from "gsap/Draggable";
+import gsap from "gsap";
 import clsx from "clsx";
 
 const Finder = () => {
 	const { openWindow } = useWindowStore();
 	const { activeLocation, setActiveLocation } = useLocationStore();
+
+	useGSAP(() => {
+		if (window.innerWidth >= 640) {
+			Draggable.create("#finder .content > li");
+		}
+	}, [activeLocation]);
 
 	const openItem = (item) => {
 		if (item.fileType === "pdf") return openWindow("resume");
@@ -46,7 +55,7 @@ const Finder = () => {
 				<Search className="icon" />
 			</div>
 
-			<div className="bg-white flex h-full">
+			<div className="finder-container flex h-full">
 				{/* Sidebar */}
 				<div className="sidebar">
 					{renderList("Favorites", Object.values(locations))}

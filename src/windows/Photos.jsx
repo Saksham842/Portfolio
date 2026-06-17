@@ -13,20 +13,7 @@ const Photos = () => {
 				<h2>Gallery</h2>
 			</div>
 
-			<div className="flex h-80">
-				{/* Sidebar */}
-				<div className="sidebar">
-					<h2>LIBRARY</h2>
-					<ul>
-						{photosLinks.map(({ id, icon, title }) => (
-							<li key={id}>
-								<img src={icon} alt={title} />
-								<p>{title}</p>
-							</li>
-						))}
-					</ul>
-				</div>
-
+			<div className="flex flex-1 min-h-0 overflow-y-auto">
 				{/* Gallery grid */}
 				<div className="gallery flex-1">
 					<ul>
