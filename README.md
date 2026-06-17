@@ -1,128 +1,75 @@
-# macOS-Style Developer Portfolio
+# macOS‑Style Portfolio
 
-An interactive developer portfolio that recreates the macOS desktop experience in the browser — draggable windows, animated dock, Finder file explorer, PDF resume viewer, gallery, terminal, and more.
+**[Live Demo](https://portfolio-saksham842s-projects.vercel.app/)** &nbsp;|&nbsp; Built by **Saksham Hans**
 
-Built with **React 19 + Vite + GSAP + Zustand + Tailwind CSS v4**.
+An interactive developer portfolio that recreates the macOS desktop experience entirely in the browser — lock‑screen landing, draggable windows, animated dock, Finder file explorer, PDF resume viewer, gallery, terminal, and more.
+
+Built with **React 19 + Vite 8 + GSAP + Zustand + Tailwind CSS v4**.
 
 ---
 
 ## Features
 
-- **Lock‑Screen Landing** — macOS‑style lock screen with live clock, date, name, and "Press any key to enter". Slides up with GSAP on keypress or click/tap. Background video auto‑plays and loops.
-- **Draggable Windows** — Every window is independently draggable via GSAP Draggable (header‑only drag). Z‑index stacking on focus. Double‑click header to maximize.
-- **Window Controls** — Red/yellow/green traffic‑light buttons: close, minimize (scales down), maximize (fills viewport). Smooth GSAP transitions for all states.
-- **Animated Dock** — macOS‑style dock at the bottom with hover magnification (GSAP). Clicking a dock icon toggles the corresponding window (open / focus / minimize).
-- **Finder File Explorer** — Browse projects, About Me, Resume, and Trash via a sidebar + content pane. Files and folders are draggable within Finder. Opens txt files, images, PDFs, and URLs in dedicated viewers.
-- **Desktop Home Icons** — Folder icons on the desktop that open directly into Finder at the corresponding location. Draggable via GSAP.
-- **PDF Resume Viewer** — Inline multi‑page PDF rendering with `react-pdf`. Download button. Scrollbar hidden when minimized, visible when maximized.
-- **Photos Gallery** — Grid‑based image gallery with click‑to‑preview in a separate image viewer window. 5‑column grid on desktop, 2‑column on mobile.
-- **Safari / Articles Window** — Styled blog/articles browser with search bar and macOS‑style toolbar.
-- **Terminal / Skills Window** — Tech stack displayed in a terminal‑style UI with checkmarks and categories.
-- **Contact Window** — Social links (GitHub, LinkedIn, Email) rendered as colorful cards with profile picture and description.
-- **macOS Navbar** — Top menu bar with logo, navigation links, icons (WiFi, search, user), live clock (updating every second), and theme toggle.
-- **Mobile Hamburger Menu** — On small screens, the nav links collapse into a hamburger button that opens a sheet overlay with Projects, Contact, Resume, and Theme toggle.
-- **Dark / Light Theme** — Toggle via the Theme button. Persisted to `localStorage`. Respects system `prefers-color-scheme` on first load.
-- **Resize Handles** — Windows can be resized from the right, bottom, and bottom‑right edges (disabled when maximized).
-- **GSAP Text Animation** — Welcome text uses variable‑font‑weight GSAP hover effect (letters get bolder based on mouse proximity).
-- **Responsive Design** — Mobile‑friendly with full‑screen windows (5px inset), hidden desktop‑only elements, and touch‑optimized interaction (drag disabled on mobile).
-
----
-
-## Project Structure
-
-```
-src/
-├── App.jsx                   # Root — mounts Landing, background video, main layout
-├── index.css                 # Global styles, Tailwind v4 theme, all window CSS, mobile overrides
-├── main.jsx                  # ReactDOM entry
-│
-├── components/
-│   ├── Navbar.jsx            # macOS menu bar with live clock, nav links, mobile hamburger
-│   ├── Landing.jsx           # Lock‑screen overlay (time, date, "Press any key to enter")
-│   ├── Welcome.jsx           # Hero text with GSAP variable‑font hover effect
-│   ├── Dock.jsx              # macOS dock with hover magnification (GSAP)
-│   ├── Home.jsx              # Desktop folder icons (draggable via GSAP)
-│   ├── WindowControls.jsx    # Red/yellow/green traffic‑light buttons
-│   └── index.js              # Barrel export
-│
-├── windows/
-│   ├── Terminal.jsx          # Tech stack in terminal style
-│   ├── Safari.jsx            # Blog/articles browser with toolbar + search
-│   ├── Finder.jsx            # File explorer — sidebar + content pane + draggable items
-│   ├── Photos.jsx            # Gallery grid — click image for preview
-│   ├── Contact.jsx           # Social links with profile card
-│   ├── Resume.jsx            # Inline PDF viewer + download button
-│   ├── TxtFile.jsx           # Generic text viewer (opened from Finder)
-│   ├── ImgFile.jsx           # Generic image preview (opened from Finder/Photos)
-│   └── index.js              # Barrel export
-│
-├── hoc/
-│   └── WindowWrapper.jsx     # HOC wrapping every window — GSAP animations, drag, focus, resize, maximize
-│
-├── store/
-│   ├── window.js             # Zustand store — open/close/minimize/maximize/focus windows, z-index
-│   └── location.js           # Zustand store — active Finder folder/location
-│
-└── constants/
-    └── index.js              # All app data: nav links, dock apps, blog posts, tech stack,
-                              # socials, gallery, Finder file tree (WORK_LOCATION, ABOUT_LOCATION,
-                              # RESUME_LOCATION, TRASH_LOCATION), WINDOW_CONFIG
-```
+| | |
+|---|---|
+| **Lock‑Screen Landing** | macOS‑style lock screen with live clock, date, and name. GSAP slide‑up animation on keypress or tap. Looping background video. |
+| **Draggable Windows** | Every window is independently draggable via GSAP Draggable (header‑only). Z‑index stacking on focus. Double‑click header to maximize. |
+| **Window Controls** | Red/yellow/green traffic‑light buttons — close, minimize (scales down with GSAP), maximize (fills viewport). All animated. |
+| **Animated Dock** | macOS‑style dock with hover magnification via GSAP. Click toggles open / focus / minimize for each window. |
+| **Finder File Explorer** | Sidebar + content pane navigation through Projects, About Me, Resume, and Trash. Opens text files, images, PDFs, and URLs in dedicated viewers. Files draggable within Finder. |
+| **Desktop Icons** | Folder icons on the desktop that open directly into Finder. Draggable via GSAP. |
+| **PDF Resume Viewer** | Inline multi‑page PDF rendering with `react-pdf`. Download button. Scrollbar adaptive — hidden when minimized, visible when maximized. |
+| **Photos Gallery** | Grid gallery with click‑to‑preview in a separate image viewer. 5‑column desktop, 2‑column mobile. |
+| **Safari / Articles** | Styled blog browser with macOS‑style toolbar and search bar. |
+| **Terminal / Skills** | Tech stack displayed in a terminal‑style UI with categories and checkmarks. |
+| **Contact Window** | Social links (GitHub, LinkedIn, Email) as colorful cards with profile picture. |
+| **Dark / Light Theme** | Toggle persisted to `localStorage`. Respects system `prefers-color-scheme` on first load. |
+| **Mobile Responsive** | Full‑screen windows (5px inset), hamburger menu, grid/stack layout changes, drag disabled on touch. |
+| **Resize Handles** | Windows resizable from right, bottom, and bottom‑right edges. |
+| **GSAP Text Animation** | Welcome text with variable‑font‑weight GSAP hover effect — letters dynamically bold based on mouse proximity. |
 
 ---
 
 ## Architecture
 
-### Window System
+### Window System — `WindowWrapper` HOC
 
-Every window is wrapped with the `WindowWrapper` HOC:
-
-```jsx
-WindowWrapper(Component, windowKey)
-```
-
-This HOC handles:
+Every window is wrapped with a generic `WindowWrapper(Component, windowKey)` higher‑order component that provides:
 
 | Concern | Implementation |
 |---|---|
-| **Open/close animation** | GSAP `scale 0.85 → 1`, `opacity 0 → 1` on open; `scale → 0.2`, `opacity → 0` on minimize. Uses `useLayoutEffect` to set initial hidden state (`display: none`) when closed. |
-| **Dragging** | GSAP Draggable on the `#window-header` element only. Disabled during maximize. Disabled entirely on mobile (<640px). |
-| **Z‑index / focus** | `onMouseDown` calls `focusWindow(key)` from the Zustand store, bumping the window's z-index. |
-| **Maximize** | Saves pre‑maximize bounds (position + size), then animates to full viewport. Restores on un‑maximize. On mobile, CSS `.maximized` class handles it without GSAP. |
-| **Resize** | Three handles (right, bottom, bottom‑right) use `mousedown`/`mousemove` listeners. Minimum size: 350×250px. Hidden on mobile. |
-| **Double‑click header** | Toggles maximize state. |
+| **Open / Close / Minimize** | GSAP animates `scale` and `opacity`. Uses `useLayoutEffect` for instant `display: none` when closed to prevent flash. |
+| **Dragging** | GSAP Draggable bound to `#window-header` only. Disabled during maximize and entirely on mobile (<640px). |
+| **Z‑Index / Focus** | `onMouseDown` triggers `focusWindow(key)` in the Zustand store, which increments the window's z-index. |
+| **Maximize** | Saves pre‑maximize bounds (position + size), animates to full viewport. Reverses on un‑maximize. On mobile, CSS `.maximized` class handles it without GSAP. |
+| **Resize** | Three `mousedown`/`mousemove` handles (right, bottom, corner). Minimum 350×250px. Hidden on mobile. |
 
-### State Management (Zustand)
+### State Management — Zustand
 
-**`useWindowStore`** — manages all window lifecycle:
+**`useWindowStore`** — centralized lifecycle for all windows:
 
 | Action | Description |
 |---|---|
 | `openWindow(key, data?)` | Opens window, assigns next z-index, optionally sets data payload |
 | `closeWindow(key)` | Closes window, resets z-index, clears data |
-| `focusWindow(key)` | Brings window to front by incrementing z-index |
+| `focusWindow(key)` | Brings window to front |
 | `minimizeWindow(key)` | Sets `isMinimized = true` |
 | `unminimizeWindow(key)` | Sets `isMinimized = false` |
 | `toggleMaximizeWindow(key)` | Toggles `isMaximized` |
 
-**`useLocationStore`** — manages Finder navigation:
+**`useLocationStore`** — manages Finder's active folder/location navigation.
 
-| Action | Description |
-|---|---|
-| `setActiveLocation(location)` | Sets the active folder/location in Finder |
-| `resetActiveLocation()` | Resets to default `Work` location |
+### Data‑Driven Viewers
 
-### Data‑Driven Windows
-
-`TxtFile` and `ImgFile` are **generic viewers** — they read their content from the window store's `data` field. When `openWindow("txtfile", { name, description, ... })` is called (e.g. from Finder), the window renders whatever data was passed in, allowing one component to display project descriptions, about‑me text, or any content.
+`TxtFile` and `ImgFile` are generic — they render whatever content is passed via `openWindow(key, data)`. This lets one component display project descriptions, about‑me text, or any file content.
 
 ### Animation Flow
 
-1. Page loads → **Landing** (lock‑screen) covers viewport with `z-index: 9999`
-2. User presses any key / clicks / taps → GSAP slides landing up `y: "-100%"` (1.2s, `power4.inOut`)
-3. Landing gets `pointer-events: none` after animation completes
-4. Main content is revealed: desktop icons, dock, navbar, welcome text
-5. Windows open via GSAP scale+fade animation when triggered from dock, navbar, or desktop icons
+1. Page loads → **Landing** (lock‑screen) covers viewport at `z-index: 9999`
+2. Keypress or click → GSAP slides landing up `y: "-100%"` (`power4.inOut`, 1.2s)
+3. `pointer-events: none` set after animation completes
+4. Main content revealed: desktop icons, dock, navbar, welcome text
+5. Windows animate in with GSAP scale+fade when triggered from dock, navbar, or desktop icons
 
 ---
 
@@ -133,105 +80,48 @@ This HOC handles:
 | Framework | React 19 + Vite 8 |
 | Styling | Tailwind CSS v4 + Vanilla CSS |
 | Animation | GSAP 3 (Draggable, useGSAP plugin) |
-| State Management | Zustand 5 + Immer middleware |
-| PDF Viewer | react-pdf + pdfjs-dist |
+| State Management | Zustand 5 + Immer |
+| PDF | react-pdf + pdfjs-dist |
 | Icons | lucide-react |
 | Utilities | clsx, dayjs |
-| Tooltips | react-tooltip |
 
 ---
 
-## Getting Started
+## Project Structure
 
-### Prerequisites
-
-- Node.js >= 18
-- npm >= 9
-
-### Installation
-
-```bash
-git clone https://github.com/Saksham842/Portfolio.git
-cd Portfolio
-npm install
-npm run dev
 ```
-
-Open [http://localhost:5173](http://localhost:5173).
-
-### Build for Production
-
-```bash
-npm run build
-npm run preview
+src/
+├── App.jsx                   # Root — Landing, background video, main layout
+├── index.css                 # Tailwind v4 theme, all window CSS, mobile overrides
+│
+├── components/
+│   ├── Navbar.jsx            # macOS menu bar with live clock, nav links, mobile hamburger
+│   ├── Landing.jsx           # Lock‑screen overlay
+│   ├── Welcome.jsx           # Hero text with GSAP font‑weight hover effect
+│   ├── Dock.jsx              # Dock with GSAP magnification
+│   ├── Home.jsx              # Desktop folder icons (draggable via GSAP)
+│   ├── WindowControls.jsx    # Traffic‑light buttons
+│
+├── windows/
+│   ├── Terminal.jsx, Safari.jsx, Finder.jsx, Photos.jsx
+│   ├── Contact.jsx, Resume.jsx, TxtFile.jsx, ImgFile.jsx
+│
+├── hoc/
+│   └── WindowWrapper.jsx     # HOC — GSAP animations, drag, focus, resize, maximize
+│
+├── store/
+│   ├── window.js             # Zustand — window lifecycle
+│   └── location.js           # Zustand — Finder navigation
+│
+└── constants/
+    └── index.js              # All content: projects, dock, tech stack, socials, gallery, Finder tree
 ```
 
 ---
 
-## Adding Your Content
+## Responsive Strategy
 
-All portfolio content lives in **`src/constants/index.js`**:
-
-| Constant | What it controls |
+| Viewport | Behavior |
 |---|---|
-| `navLinks` | Navbar menu items and which window they open |
-| `dockApps` | Dock icons, names, and window keys |
-| `blogPosts` | Safari / Articles window posts (title, date, image, link) |
-| `techStack` | Terminal / Skills window categories |
-| `socials` | Contact window cards (platform, credential, link, color) |
-| `gallery` | Photos window gallery images |
-| `photosLinks` | Photos sidebar items (Library, Memories, Places, etc.) |
-| `WORK_LOCATION` | Finder → Work — folder structure with projects, files, and URLs |
-| `ABOUT_LOCATION` | Finder → About Me — profile images and bio text |
-| `RESUME_LOCATION` | Finder → Resume — PDF file reference |
-| `TRASH_LOCATION` | Finder → Trash — miscellaneous images |
-
-Place your **resume PDF** at `public/files/my_resume.pdf`.
-
-Place **background videos** at `public/images/bg-video-30s.mp4` (primary) and `public/images/bg-video-optimized.mp4` (fallback).
-
----
-
-## Window Keys Reference
-
-| Key | Window | Description |
-|---|---|---|
-| `terminal` | Skills | Tech stack in terminal style |
-| `safari` | Articles | Blog posts browser |
-| `finder` | Portfolio | File explorer with sidebar |
-| `photos` | Gallery | Image gallery grid |
-| `contact` | Contact | Social links card |
-| `resume` | Resume | PDF resume viewer |
-| `txtfile` | Text Viewer | Generic text file viewer |
-| `imgfile` | Image Viewer | Generic image preview |
-
-Open any window programmatically:
-
-```js
-import { useWindowStore } from "#store/window.js";
-openWindow("terminal");
-openWindow("txtfile", { name: "note.txt", description: ["Hello!"] });
-```
-
----
-
-## Responsive Notes
-
-- **Desktop** (≥640px): Full macOS‑like experience with draggable windows, dock magnification, desktop icons, resize handles.
-- **Mobile** (<640px):
-  - Windows become full‑screen with 5px inset (or 0px when maximized)
-  - Drag, resize, and dock mousemove effects are disabled
-  - GSAP maximize/unmaximize animation is skipped — CSS handles it via `.maximized` class
-  - Desktop icons (`#home`) are hidden
-  - Nav links collapse into a hamburger menu with sheet overlay
-  - Gallery switches from 5‑column to 2‑column grid
-  - Contact layout stacks vertically
-  - Finder sidebar becomes a horizontal row
-  - Safari search bar is hidden
-  - A notice is displayed: "Move to a desktop site or PC for a better experience"
-
----
-
-## License
-
-MIT — feel free to use this as inspiration or a starting template for your own portfolio.
+| **Desktop** (≥640px) | Full macOS experience — drag, resize, dock magnification, desktop icons, all layouts |
+| **Mobile** (<640px) | Windows go full‑screen (5px inset, 0px when maximized). Drag/resize disabled. GSAP maximize skipped — CSS `.maximized` class handles it. Desktop icons hidden. Nav links become hamburger sheet. Gallery → 2 columns. Contact stacks. Finder sidebar → horizontal row. Safari search hidden. |
