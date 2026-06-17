@@ -39,10 +39,9 @@ const App = () => {
 
 	return (
 		<>
-			<video id="bg-video" autoPlay muted playsInline
-				onTimeUpdate={(e) => { if (e.target.currentTime >= 30) e.target.currentTime = 0; }}
-			>
-				<source src="/images/bg-video.mp4" type="video/mp4" />
+			<video id="bg-video" autoPlay muted loop playsInline preload="metadata">
+				<source src="/images/bg-video.webm" type="video/webm" />
+				<source src="/images/bg-video-optimized.mp4" type="video/mp4" />
 			</video>
 			<Landing ref={landingRef} />
 			<main>
